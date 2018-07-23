@@ -65,29 +65,26 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__e2e_hello_world_e2e_js__ = __webpack_require__(1);
 
-
-__webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chai__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chai___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chai__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(3);
 
-
-var _chai = __webpack_require__(2);
-
-var _utils = _interopRequireDefault(__webpack_require__(3));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe("application launch", () => {
-  beforeEach(_utils.default.beforeEach);
-  afterEach(_utils.default.afterEach);
+  beforeEach(__WEBPACK_IMPORTED_MODULE_1__utils__["a" /* default */].beforeEach);
+  afterEach(__WEBPACK_IMPORTED_MODULE_1__utils__["a" /* default */].afterEach);
   it("shows hello world text on screen after launch", function () {//return this.app.client.getText("#greet").then(text => {
     //  expect(text).to.equal("Hello James!");
     //});
@@ -102,26 +99,20 @@ module.exports = require("chai");
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_electron__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_spectron__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_spectron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_spectron__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _electron = _interopRequireDefault(__webpack_require__(4));
-
-var _spectron = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const beforeEach = function () {
   this.timeout(10000);
-  this.app = new _spectron.Application({
-    path: _electron.default,
+  this.app = new __WEBPACK_IMPORTED_MODULE_1_spectron__["Application"]({
+    path: __WEBPACK_IMPORTED_MODULE_0_electron___default.a,
     args: ["."],
     startTimeout: 10000,
     waitTimeout: 10000
@@ -139,11 +130,10 @@ const afterEach = function () {
   return undefined;
 };
 
-var _default = {
+/* harmony default export */ __webpack_exports__["a"] = ({
   beforeEach,
   afterEach
-};
-exports.default = _default;
+});
 
 /***/ }),
 /* 4 */

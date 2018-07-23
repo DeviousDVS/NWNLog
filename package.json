@@ -5,7 +5,7 @@
   "version": "0.1.2",
   "private": true,
   "author": "DvS <dvs@internode.on.net>",
-  "copyright": "© 2017, DvS",
+  "copyright": "© 2018, DvS",
   "homepage": "http://example.com",
   "main": "app/background.js",
   "build": {

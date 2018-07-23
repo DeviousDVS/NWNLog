@@ -65,52 +65,50 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_hello_world_hello_world_spec_js__ = __webpack_require__(1);
 
-
-__webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chai__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chai___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chai__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hello_world__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_env__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_env___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_env__);
 
 
-var _chai = __webpack_require__(2);
 
-var _hello_world = __webpack_require__(3);
-
-var _env = _interopRequireDefault(__webpack_require__(4));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+/*
 describe("hello world", () => {
   it("greets", () => {
-    (0, _chai.expect)((0, _hello_world.greet)()).to.equal("Hello James!");
+    expect(greet()).to.equal("Hello James!");
   });
+
   it("says goodbye", () => {
-    (0, _chai.expect)((0, _hello_world.bye)()).to.equal("See ya!");
+    expect(bye()).to.equal("See ya!");
   });
+/*
   it("should load test environment variables", () => {
-    (0, _chai.expect)(_env.default.name).to.equal("test");
-    (0, _chai.expect)(_env.default.description).to.equal("Add here any environment specific stuff you like.");
+    expect(env.name).to.equal("test");
+    expect(env.description).to.equal(
+      "Add here any environment specific stuff you like."
+    );
   });
+
   it("babel features should work", () => {
-    const a = {
-      a: 1
-    };
-    const b = Object.assign({}, a, {
-      b: 2
-    });
-    (0, _chai.expect)(b).to.eql({
-      a: 1,
-      b: 2
-    });
+    const a = { a: 1 };
+    const b = { ...a, b: 2 };
+    expect(b).to.eql({ a: 1, b: 2 });
   });
 });
+*/
 
 /***/ }),
 /* 2 */
@@ -120,27 +118,19 @@ module.exports = require("chai");
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.bye = exports.greet = void 0;
-
 const greet = () => {
   return "Hello James!";
 };
-
-exports.greet = greet;
+/* unused harmony export greet */
 
 const bye = () => {
   return "See ya!";
 };
+/* unused harmony export bye */
 
-exports.bye = bye;
 
 /***/ }),
 /* 4 */
