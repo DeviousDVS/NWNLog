@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NWN Log Viewer</title>
+</head>
+<body ng-app="mainApp">
+  <div id="app" class="container" style="display: none;" ng-controller="mainController">
+    <div class="row my-2">
+      <div class="col">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" ng-click="openLogFile()">Load NWN Log File</button>
+          </span>
+          <input type="text" class="form-control" placeholder="" value="{{logFileName}}">
+          <span class="input-group-addon">
+            <input type="checkbox" aria-label="Checkbox for following text input" ng-model="confirmed" ng-change="change()">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Combatant
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" ng-click="selectCreature(creature)" ng-repeat="creature in actors" href="#">{{creature}}</a>
+            </div>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with dropdown button" value="{{selectedCreature}}">
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-4">
+        Attack Bonus
+      </div>
+      <div class="col-2">
+          <input type="text" class="form-control" value="{{bestAB}}">
+      </div>
+      <div class="col-4">
+        <div>
+          Maximum Damage
+        </div>
+      </div>
+      <div class="col-2">
+        <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{maxDamage}}">
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-4">
+        Hit %
+      </div>
+      <div class="col-2">
+          <input type="text" class="form-control" value="{{hitPercent}}">
+      </div>
+      <div class="col-4">
+        <div>
+          Average Damage
+        </div>
+      </div>
+      <div class="col-2">
+        <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{avgDamage}}">
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-4">
+        Critical %
+      </div>
+      <div class="col-2">
+          <input type="text" class="form-control" value="{{critPercent}}">
+      </div>
+      <div class="col-4">
+        <div>
+          Total Damage
+        </div>
+      </div>
+      <div class="col-2">
+        <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{totalDamage}}">
+      </div>
+    </div>
+    <hr>
+    <div style="display: {{display}};">
+      <div class="row my-2">
+        <div class="col-4">
+          <div>
+            Enemy
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            Damage from {{selectedCreature}}
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            Attack Bonus
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            Damage to {{selectedCreature}}
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            {{selectedCreature}} has killed
+          </div>
+        </div>
+      </div>
+      <div class="row my-2" ng-repeat="target in targets">
+        <div class="col-4">
+          <div>
+            {{target.name}}
+          </div>
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.damage}}">
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.attackBonus}}">
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.damaged}}">
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.killed}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
