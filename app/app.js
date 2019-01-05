@@ -333,6 +333,7 @@ function logHits() {
         } //console.log("Hitter: " + actor[a].name + ", Target: " + target);
 
 
+        console.log(actorMap[target]);
         actor[a].combatData[target].damage += dam;
 
         if (actorMap[target].combatData[actor[a].name] == undefined) {

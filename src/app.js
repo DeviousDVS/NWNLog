@@ -205,6 +205,8 @@ function logHits() {
           actor[a].combatData[target].name = target;
         }
         //console.log("Hitter: " + actor[a].name + ", Target: " + target);
+        //console.log(actorMap[target]);
+        // TODO: ensure the actorMap[target] is defined, or at least why it's not on some occasions
         actor[a].combatData[target].damage += dam;
         if(actorMap[target].combatData[actor[a].name] == undefined) {
           actorMap[target].combatData[actor[a].name] = new CombatData();
