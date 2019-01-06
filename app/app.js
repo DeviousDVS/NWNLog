@@ -79,7 +79,7 @@ module.exports = require("fs-jetpack");
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"development","description":"Add here any environment specific stuff you like."}
+module.exports = {"name":"production","description":"Add here any environment specific stuff you like."}
 
 /***/ }),
 /* 3 */
@@ -228,7 +228,20 @@ function Actor(name) {
     var targets = Object.values(this.combatData);
 
     for (var i = 0; i < targets.length; i++) {
-      targets[i].attackBonus = targets[i].actor.attackBonus();
+      var actor = targets[i].actor;
+
+      if (actor) {
+        try {
+          targets[i].attackBonus = actor.attackBonus();
+          console.log(targets[i].attackBonus);
+        } catch (error) {
+          console.log(targets[i]);
+          console.log(actor);
+          console.log(error);
+        }
+      } else {
+        targets[i].attackBonus = "+0";
+      }
     }
 
     return targets;
@@ -331,19 +344,22 @@ function logHits() {
           actor[a].combatData[target] = new CombatData();
           actor[a].combatData[target].name = target;
         } //console.log("Hitter: " + actor[a].name + ", Target: " + target);
+        //console.log(actorMap);
+        //console.log(target);
 
 
-        console.log(actorMap[target]);
         actor[a].combatData[target].damage += dam;
 
-        if (actorMap[target].combatData[actor[a].name] == undefined) {
-          actorMap[target].combatData[actor[a].name] = new CombatData();
-          actorMap[target].combatData[actor[a].name].name = actor[a].name;
-        }
+        if (actorMap[target] != undefined) {
+          if (actorMap[target].combatData[actor[a].name] == undefined) {
+            actorMap[target].combatData[actor[a].name] = new CombatData();
+            actorMap[target].combatData[actor[a].name].name = actor[a].name;
+          }
 
-        actorMap[target].combatData[actor[a].name].damaged += dam;
-        actor[a].combatData[target].actor = actorMap[target];
-        actorMap[target].combatData[actor[a].name].actor = actor[a]; //console.log(actor[a].name + " " + actor[a].combatData[target]);
+          actorMap[target].combatData[actor[a].name].damaged += dam;
+          actor[a].combatData[target].actor = actorMap[target];
+          actorMap[target].combatData[actor[a].name].actor = actor[a]; //console.log(actor[a].name + " " + actor[a].combatData[target]);
+        }
       }
 
       if (logLine[l].indexOf(actor[a].name + " killed") > -1) {
