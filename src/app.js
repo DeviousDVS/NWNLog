@@ -72,6 +72,7 @@ ang.controller('mainController', function($scope) {
 
 function CombatData() {
   this.name;
+  this.ac = 10;
   this.damage = 0;
   this.damaged = 0;
   this.attackBonus;
@@ -88,6 +89,7 @@ function Actor(name) {
   this.hits = 0;
   this.crits = 0;
   this.misses = 0;
+  this.ac = 10;
   this.avgDamage = function() {
     return (this.totalDamage / (this.hits + this.crits)).toFixed(1);
   }
@@ -116,7 +118,7 @@ function Actor(name) {
       if (actor) {
         try {
           targets[i].attackBonus = actor.attackBonus();
-          console.log(targets[i].attackBonus);
+          //console.log(targets[i].attackBonus);
         } catch(error) {
           console.log(targets[i]);
           console.log(actor);
@@ -235,6 +237,18 @@ function logHits() {
       if(logLine[l].indexOf(actor[a].name + " killed") > -1) {
         var target = logLine[l].substring(logLine[l].lastIndexOf(" killed ") + 8, logLine[l].length - 1).trim();
         actor[a].combatData[target].killed++;
+      }
+      if(logLine[l].indexOf(actor[a].name + " attacks") > -1 && logLine[l].indexOf(attackOutcome[2]) > -1) {
+        var target = logLine[l].substring(logLine[l].lastIndexOf("attacks") + 8, logLine[l].lastIndexOf(":") - 9).trim();
+        var ac = parseInt(logLine[l].substring(logLine[l].indexOf(" = ") + 2, logLine[l].length - 2).trim());
+        
+        if(actor[a].combatData[target] == undefined) {
+          actor[a].combatData[target] = new CombatData();
+          actor[a].combatData[target].name = target;
+        }
+        if(ac >= actor[a].combatData[target].ac) {
+          actor[a].combatData[target].ac = ac + 1;
+        }
       }
     }
   }

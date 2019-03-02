@@ -9,13 +9,16 @@
     <div class="row my-2">
       <div class="col">
         <div class="input-group">
-          <span class="input-group-btn">
+          <div class="input-group-prepend">
             <button class="btn btn-secondary" type="button" ng-click="openLogFile()">Load NWN Log File</button>
-          </span>
+          </div>
           <input type="text" class="form-control" placeholder="" value="{{logFileName}}">
-          <span class="input-group-addon">
-            <input type="checkbox" aria-label="Checkbox for following text input" ng-model="confirmed" ng-change="change()">
-          </span>
+          <div class="input-group-append">  
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input" ng-model="confirmed" ng-change="change()">
+              <span>&nbsp Auto-reload</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,9 +88,14 @@
     <hr>
     <div style="display: {{display}};">
       <div class="row my-2">
-        <div class="col-4">
+        <div class="col-2">
           <div>
             Enemy
+          </div>
+        </div>
+        <div class="col-2">
+          <div>
+            Armour Class
           </div>
         </div>
         <div class="col-2">
@@ -112,10 +120,13 @@
         </div>
       </div>
       <div class="row my-2" ng-repeat="target in targets">
-        <div class="col-4">
+        <div class="col-2">
           <div>
             {{target.name}}
           </div>
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.ac}}">
         </div>
         <div class="col-2">
           <input type="text" class="form-control" aria-describedby="basic-addon3" value="{{target.damage}}">
